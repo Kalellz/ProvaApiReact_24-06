@@ -10,18 +10,21 @@ export default function Consultar() {
         let resposta = await axios.get('http://localhost:5000/anime')
         return resposta.data
     }
-    async function Click(){
+    async function Click() {
         const resp = await listarTodosAnimes()
         setAnime(resp)
     }
     return (
-        <main>
+        <main className='page-Consultar'>
+            <div className='botao'>
             <button onClick={Click}>Consultar</button>
-            {anime.map(item => <table>
-                <tr><th>ID</th><th>NOME</th></tr>
-                <tr><td>{item.id}</td>
-                <td>{item.nome}</td></tr>
-            </table>)}
+            </div>
+            {anime.map(item => <tr className='tabela'> 
+                <th>{item.id}: </th>
+                <td>{item.nome}</td>
+            </tr>
+            )}
+            
         </main>
     )
 }
